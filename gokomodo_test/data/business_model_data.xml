@@ -1,0 +1,14 @@
+<data>
+    <record id="business_retail" model="gokomodo.business.model">
+        <field name="short_name">RT</field>
+        <field name="name">Retail</field>
+    </record>
+    <record id="business_corporate" model="gokomodo.business.model">
+        <field name="short_name">CORP</field>
+        <field name="name">Corporate</field>
+    </record>
+    <record id="business_subscription" model="gokomodo.business.model">
+        <field name="short_name">SUB</field>
+        <field name="name">Subscription</field>
+    </record>
+</data>

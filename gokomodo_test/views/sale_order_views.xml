@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_view_search_inherit_quotation_gokomodo_test" model="ir.ui.view">  
+        <field name="name">sale.order.search.view.inherit.gokomodo.test</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <filter string="Business Model" name="business_model_id" context="{'group_by': 'business_model_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_quotation_tree_inherit_gokomodo_test" model="ir.ui.view">
+        <field name="name">sale.order.tree.inherit.gokomodo.test</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="business_model_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_view_form_inherit_gokomodo_test" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.gokomodo.test</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet//group[@name='partner_details']//field[@name='partner_id']" position="before">
+                <field name="business_model_id"/>
+            </xpath>
+
+            <xpath expr="//form//sheet//notebook//page[@name='order_lines']//tree//field[@name='tax_id']" position="attributes">
+                <attribute name="domain">[('type_tax_use','=','sale'),('company_id','=',parent.company_id),('business_model_id','=',parent.business_model_id)]</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
